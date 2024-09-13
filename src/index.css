@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.login_form{
+  width: 30rem;
+}
+
+.tableImg{
+  max-height: 75px;
+  max-width: 75px;
+}
+table tr td{
+  padding : 2px!important;
+  margin : 2px!important;
+}

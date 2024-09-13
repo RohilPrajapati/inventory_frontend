@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import {router} from "./router";
+import {RouterProvider} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+    QueryClient,
+    QueryClientProvider,
+} from '@tanstack/react-query'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <QueryClientProvider client={queryClient}>
+            <ToastContainer
+                position="bottom-right"
+            />
+            <RouterProvider router={router} />
+        </QueryClientProvider>
     </div>
   );
 }
