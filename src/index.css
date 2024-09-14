@@ -24,3 +24,22 @@ table tr td{
   padding : 2px!important;
   margin : 2px!important;
 }
+.main_body{
+  margin-left: 12rem;
+}
+
+.top_nav{
+  box-shadow: 0 1px 10px grey;
+}
+
+.sidebar{
+  --bs-bg-opacity:1;
+  background-color: rgba(var(--bs-tertiary-bg-rgb),var(--bs-bg-opacity))!important;
+  width: 12rem;
+  height: 100vh;
+  box-shadow: 1px 0 10px grey;
+  position: fixed; /* Fix the sidebar position */
+  top: 0px;
+  left: 0;
+  z-index: 1030; /* Ensure it appears above other content */
+}

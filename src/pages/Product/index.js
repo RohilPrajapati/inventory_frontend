@@ -25,7 +25,7 @@ const Product = () => {
     }
 
     return (
-        <>
+        <div className='container mt-2'>
             <div className='d-flex justify-content-lg-between'>
                 <h4>Product Table</h4>
                 <Button as={Link} to="/product/form" className="bg-dark">Add Product</Button>
@@ -38,7 +38,7 @@ const Product = () => {
                 currentPage={currentPage}
                 handlePageChange={handlePageChange}
             />
-        </>
+        </div>
     );
 }
 export default Product

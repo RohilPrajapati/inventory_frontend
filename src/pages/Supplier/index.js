@@ -9,7 +9,7 @@ import SupplierTable from "./components/SupplierTable";
 const Supplier = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const { data, error, isLoading,refetch } = useQuery({
-        queryKey: ['fetchProduct',currentPage],
+        queryKey: ['fetchSupplier',currentPage],
         queryFn : ()=>{
             return getSupplier({'page':currentPage}).then((response) => {
                 return response.data
@@ -25,7 +25,7 @@ const Supplier = () => {
     }
 
     return (
-        <>
+        <div className='container mt-2'>
             <div className='d-flex justify-content-lg-between'>
                 <h4>Supplier Table</h4>
                 <Button as={Link} to="/supplier/form" className="bg-dark">Add Supplier</Button>
@@ -38,7 +38,7 @@ const Supplier = () => {
                 currentPage={currentPage}
                 handlePageChange={handlePageChange}
             />
-        </>
+        </div>
     );
 }
 export default Supplier

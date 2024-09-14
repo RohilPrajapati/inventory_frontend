@@ -9,6 +9,8 @@ import SupplierFormPage from "../pages/Supplier/SupplierFormPage";
 import Product from "../pages/Product";
 import ProductFormPage from "../pages/Product/ProductFormPage";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import PurchasePage from "../pages/Transaction/PurchasePage"
+import SalePages from "../pages/Transaction/SalePages";
 // import Education from "../pages/Education";
 // import Skill from "../pages/Skill";
 // import Project from "../pages/Project";
@@ -29,6 +31,8 @@ export const router = createBrowserRouter(
                 <Route path="supplier/form/:id?" element={<SupplierFormPage />} />
                 <Route path="product" element={<Product />} />
                 <Route path="product/form/:id?" element={<ProductFormPage />} />
+                <Route path="purchase/" element={<PurchasePage />} />
+                <Route path="sales/" element={<SalePages />} />
                 {/*<Route path="experience" element={<Experience />} />
                 <Route path="education" element={<Education />} />
                 <Route path="skill" element={<Skill />} />

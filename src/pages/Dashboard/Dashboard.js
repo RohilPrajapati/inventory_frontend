@@ -24,7 +24,7 @@ const Dashboard = () => {
         return "Error"
     }
     return (
-        <>
+        <div className='container mt-2'>
             <h1 className="fw-bold">Dashboard</h1>
             <div className="d-flex justify-content-start flex-wrap">
                 <Card name="Product Count" color="#097969" count={data['product_count']}/>
@@ -35,7 +35,7 @@ const Dashboard = () => {
                 <Card name="Sales Amount" color="#757D75" count="Rs. 30000"/>
                 <Card name="Purchase Amount" color="#763568" count="Rs. 45000"/>
             </div>
-        </>
+        </div>
     )
 }
 export default Dashboard;
