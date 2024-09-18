@@ -27,7 +27,7 @@ const PurchasePage = () => {
 
     return (
         <div className='container mt-2'>
-            <div className='d-flex justify-content-lg-between'>
+            <div className='d-flex justify-content-lg-between mt-4'>
                 <h4>Purchase Table</h4>
                 <Button as={Link} to="/purchase/form" className="bg-dark">Add Purchase</Button>
             </div>

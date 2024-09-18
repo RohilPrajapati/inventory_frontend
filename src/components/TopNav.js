@@ -26,7 +26,7 @@ const TopNav = () => {
               <NavDropdown.Item as={Link} to="/supplier">Supplier</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Inventory" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Inventory Status</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/inventory">Inventory Status</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Report</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action5">

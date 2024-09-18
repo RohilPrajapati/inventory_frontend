@@ -1,34 +1,16 @@
 import {Table} from 'react-bootstrap';
 import PulseLoader from 'react-spinners/PulseLoader';
-import {Link} from "react-router-dom";
-import {Button} from "react-bootstrap";
-import {deleteProduct} from "../api/call";
-import {toast} from "react-toastify";
-import ConfirmDeleteModal from '../../../components/ConfirmDeleteModal';
 import {useState} from "react";
 import ReactPaginate from 'react-paginate';
 import moment from 'moment';
+import InfoIcon from '@mui/icons-material/Info';
+import LoopOutlinedIcon from '@mui/icons-material/LoopOutlined';
 
-const PurchaseTable = ({data, error, isLoading, refetch, currentPage, handlePageChange}) => {
+const StockTable = ({data, error, isLoading, refetch, currentPage, handlePageChange}) => {
     const [showModal, setShowModal] = useState(false);
     const [id, setId] = useState(null)
     // const handleEditClick = (row_id) => {
     //     navigate(`/category/${row_id}`)
-    // }
-
-    const handleDeleteClick = (id) => {
-        setId(id)
-        setShowModal(true);
-    };
-    // const handleConfirmDelete = (row_id) => {
-    //     deleteProduct(row_id).then((response) => {
-    //         setId(null)
-    //         setShowModal(false)
-    //         refetch()
-    //         toast.success("Supplier delete successfully")
-    //     }).catch((error) => {
-    //         toast.error(error.data.message)
-    //     })
     // }
 
 
@@ -45,27 +27,36 @@ const PurchaseTable = ({data, error, isLoading, refetch, currentPage, handlePage
                 <thead className='table-dark'>
                 <tr>
                     <th>S. N.</th>
-                    <th>Bill No.</th>
+                    <th>Product Name</th>
+                    <th>Supplier Name</th>
                     <th>Purchase Date</th>
-                    <th>Remarks</th>
-                    <th>Total Amount</th>
+                    <th>Quantity</th>
+                    <th>Minimum Stock Level</th>
+                    <th>Purchase Price</th>
+                    <th>Sales Price</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                {data?.data && !isLoading && data?.data.map((purchase, index) => (
-                    <tr key={index} className="align-middle">
+                {data?.data && !isLoading && data?.data.map((stock, index) => (
+                    <tr key={index} className={`align-middle ${stock?.quantity_in_stock < stock?.minimum_stock_level ? 'table-danger' : ''}`}
+                    >
                         <td>{index + ((currentPage - 1) * 10) + 1}</td>
-                        <td>{purchase?.bill_no}</td>
-                        <td>{moment(purchase?.transaction_date).format('MMMM DD, YYYY hh:mm:ss A')}</td>
-                        <td>{purchase?.notes}</td>
-                        <td>{purchase?.total_amount}</td>
+                        <td>{stock?.product?.name}({stock?.product?.color})</td>
+                        <td>{stock?.supplier?.name}</td>
+                        <td>{moment(stock?.transaction_date).format('MMMM DD, YYYY hh:mm:ss A')}</td>
+                        <td className="text-end">{stock?.quantity_in_stock}</td>
+                        <td className="text-end">{stock?.minimum_stock_level}</td>
+                        <td className="text-end">{stock?.purchase_price}</td>
+                        <td className="text-end">{stock?.sales_price}</td>
                         {/* <td>{product.is_active ? "Active" : "Inactive"}</td> */}
                         <td className="text-center">
                             {/* <Button className="btn btn-primary m-1 " as={Link}
                                     to={`/product/form/${product.id}`}>Edit</Button> */}
                             {/* <div className="btn btn-danger mx-1" onClick={() => handleDeleteClick(product.id)}>Delete
                             </div> */}
+                            <InfoIcon/>
+                            <LoopOutlinedIcon />
                         </td>
                     </tr>
                 ))}
@@ -95,4 +86,4 @@ const PurchaseTable = ({data, error, isLoading, refetch, currentPage, handlePage
         </>
     );
 }
-export default PurchaseTable;
+export default StockTable;
