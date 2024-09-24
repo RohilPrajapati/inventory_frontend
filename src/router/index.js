@@ -12,6 +12,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import PurchasePage from "../pages/Transaction/PurchasePage"
 import SalePages from "../pages/Transaction/SalePages";
 import Inventory from "../pages/Inventory"
+import PurchaseFormPage from "../pages/Transaction/PurchaseFormPage";
 // import Education from "../pages/Education";
 // import Skill from "../pages/Skill";
 // import Project from "../pages/Project";
@@ -33,6 +34,7 @@ export const router = createBrowserRouter(
                 <Route path="product" element={<Product />} />
                 <Route path="product/form/:id?" element={<ProductFormPage />} />
                 <Route path="purchase/" element={<PurchasePage />} />
+                <Route path="purchase/form" element={<PurchaseFormPage />} />
                 <Route path="sales/" element={<SalePages />} />
                 <Route path="inventory/" element={<Inventory />} />
                 {/*<Route path="experience" element={<Experience />} />

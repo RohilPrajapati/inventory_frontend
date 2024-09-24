@@ -8,34 +8,9 @@ import ConfirmDeleteModal from '../../../components/ConfirmDeleteModal';
 import {useState} from "react";
 import ReactPaginate from 'react-paginate';
 import moment from 'moment';
+import InfoIcon from "@mui/icons-material/Info";
 
-const PurchaseTable = ({data, error, isLoading, refetch, currentPage, handlePageChange}) => {
-    const [showModal, setShowModal] = useState(false);
-    const [id, setId] = useState(null)
-    // const handleEditClick = (row_id) => {
-    //     navigate(`/category/${row_id}`)
-    // }
-
-    const handleDeleteClick = (id) => {
-        setId(id)
-        setShowModal(true);
-    };
-    // const handleConfirmDelete = (row_id) => {
-    //     deleteProduct(row_id).then((response) => {
-    //         setId(null)
-    //         setShowModal(false)
-    //         refetch()
-    //         toast.success("Supplier delete successfully")
-    //     }).catch((error) => {
-    //         toast.error(error.data.message)
-    //     })
-    // }
-
-
-    const handleCloseModal = () => {
-        setId(null)
-        setShowModal(false);
-    };
+const PurchaseTable = ({data, error, isLoading, refetch, currentPage, handlePageChange,handleRowClick}) => {
     if(isLoading) {
         return <PulseLoader/>
     }
@@ -66,6 +41,7 @@ const PurchaseTable = ({data, error, isLoading, refetch, currentPage, handlePage
                                     to={`/product/form/${product.id}`}>Edit</Button> */}
                             {/* <div className="btn btn-danger mx-1" onClick={() => handleDeleteClick(product.id)}>Delete
                             </div> */}
+                            <InfoIcon onClick={() => handleRowClick(purchase)} />
                         </td>
                     </tr>
                 ))}

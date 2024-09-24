@@ -5,9 +5,12 @@ import {useQuery} from "@tanstack/react-query";
 import {toast} from "react-toastify";
 import {Link} from "react-router-dom";
 import SalesTable from './components/SalesTable';
+import TransactionDetail from "./components/TransactionDetail";
 
 const PurchasePage = () => {
     const [currentPage, setCurrentPage] = useState(1)
+    const [showModal, setShowModal] = useState(false);
+    const [selectedRow, setSelectedRow] = useState(null);
     const { data, error, isLoading,refetch } = useQuery({
         queryKey: ['fetchTransaction',currentPage],
         queryFn : ()=>{
@@ -19,6 +22,17 @@ const PurchasePage = () => {
             })
         },
     });
+
+    const handleRowClick = (rowData) => {
+        console.log("issue on")
+        console.log(rowData)
+        setSelectedRow(rowData);
+        setShowModal(true); // Show modal
+    };
+    const handleCloseModal = () => {
+        setSelectedRow(null)
+        setShowModal(false);
+    };
 
     const handlePageChange = (selectedPage) => {
         console.log(selectedPage)
@@ -38,7 +52,15 @@ const PurchasePage = () => {
                 refetch={refetch}
                 currentPage={currentPage}
                 handlePageChange={handlePageChange}
+                handleRowClick={handleRowClick}
             />
+            {showModal && (
+                <TransactionDetail
+                    show={showModal}
+                    onClose={handleCloseModal}
+                    data={selectedRow}
+                />
+            )}
         </div>
     );
 }

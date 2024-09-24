@@ -4,19 +4,16 @@ import {useState} from "react";
 import ReactPaginate from 'react-paginate';
 import moment from 'moment';
 import InfoIcon from '@mui/icons-material/Info';
+import PurchaseDetail from "./TransactionDetail";
 
-const PurchaseTable = ({data, error, isLoading, refetch, currentPage, handlePageChange}) => {
-    const [showModal, setShowModal] = useState(false);
-    const [id, setId] = useState(null)
-    // const handleEditClick = (row_id) => {
-    //     navigate(`/category/${row_id}`)
-    // }
+const PurchaseTable = ({data, error, isLoading, refetch, currentPage, handlePageChange,handleRowClick}) => {
 
 
-    const handleCloseModal = () => {
-        setId(null)
-        setShowModal(false);
-    };
+    // Handle row click to open modal
+
+
+    // Handle modal close
+
     if(isLoading) {
         return <PulseLoader/>
     }
@@ -47,7 +44,7 @@ const PurchaseTable = ({data, error, isLoading, refetch, currentPage, handlePage
                                     to={`/product/form/${product.id}`}>Edit</Button> */}
                             {/* <div className="btn btn-danger mx-1" onClick={() => handleDeleteClick(product.id)}>Delete
                             </div> */}
-                            <InfoIcon />
+                                <InfoIcon onClick={() => handleRowClick(purchase)} />
                         </td>
                     </tr>
                 ))}
@@ -68,12 +65,8 @@ const PurchaseTable = ({data, error, isLoading, refetch, currentPage, handlePage
                 breakLinkClassName="page-link"
                 activeClassName="active"
             />
-            {/* <ConfirmDeleteModal
-                show={showModal}
-                onClose={handleCloseModal}
-                onConfirm={handleConfirmDelete}
-                id={id}
-            /> */}
+            {/* Render modal and pass the selected row data */}
+
         </>
     );
 }
