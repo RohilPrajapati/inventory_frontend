@@ -2,19 +2,16 @@ import {INVENTORY} from "./index";
 
 import { createClient } from "../../../plugins/axios";
 
-export function postPurchase(data) {
-    return createClient().post(`${INVENTORY}purchase/`, data);
-}
-
-export function postSales(data) {
-    return createClient().post(`${INVENTORY}sales/`, data);
-}
 
 export function getStock(params = {}) {
     return createClient().get(`${INVENTORY}stock/`, { params });
 }
 
-export function getSingleTransaction(ID, params = {}) {
+export function getProductStock(product_id,params = {}) {
+    return createClient().get(`${INVENTORY}stock/product/${product_id}/`, { params });
+}
+
+export function getSingleTransaction(ID, params = {})    {
     return createClient().get(`${INVENTORY}${ID}/`, { params });
 }
 

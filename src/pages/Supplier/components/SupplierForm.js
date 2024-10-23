@@ -29,7 +29,12 @@ const SupplierForm = () => {
         validationSchema: Yup.object({
             name: Yup.string()
                 .required('Name is required')
-                .min(3, 'Name must be at least 3 characters long')
+                .min(3, 'Name must be at least 3 characters long'),
+            email: Yup.string().required('Email is required').email("Invalid Email address"),
+            phone_number: Yup.string().required("Phone Number is required")
+                .min(6,"Phone number must be greater 6 digit")
+                .max(9999999999,"Phone number must be less then 15 digit")
+
         }),
         onSubmit: values => {
             // alert(JSON.stringify(values, null, 2));
@@ -63,6 +68,8 @@ const SupplierForm = () => {
             navigate('/supplier');
             toast.success('Added Supplier Successfully!');
         }).catch((error) => {
+            console.log(error.response.data)
+            supplierForm.setErrors(error.response.data)
             toast.error('Fail to add Supplier');
         })
     }

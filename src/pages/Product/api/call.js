@@ -14,6 +14,10 @@ export function getProduct(params = {}) {
     return createClient().get(`${Product}/`, { params });
 }
 
+export function getProductWithStock(params = {}) {
+    return createClient().get(`${Product}/stock/`, { params });
+}
+
 export function getSingleProduct(ID, params = {}) {
     return createClient().get(`${Product}/${ID}/`, { params });
 }
