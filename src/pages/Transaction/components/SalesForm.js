@@ -13,10 +13,12 @@ import {useState} from "react";
 
 
 
+
 const SalesForm = () => {
     const {id} = useParams();
     const navigate = useNavigate()
     const [stockLists, setStockLists] = useState({});
+    const [startDate,setStartDate] =useState()
     const salesForm = useFormik({
         initialValues: {
             id: null,
