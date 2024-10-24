@@ -5,8 +5,14 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
-
+import {logout,getAccessToken} from '../helpers/index'
+import {useNavigate} from "react-router-dom";
 const TopNav = () => {
+  const navigate = useNavigate()
+    const handleLogout = () => {
+        logout()
+      navigate('/login')
+    }
     return (
       <Navbar expand="lg" className="bg-body-tertiary sticky-top top_nav">
       <Container fluid>
@@ -33,6 +39,8 @@ const TopNav = () => {
                 Forecast
               </NavDropdown.Item>
             </NavDropdown>
+            {!!getAccessToken() &&
+            <Nav.Link onClick={handleLogout}>Logout</Nav.Link>}
           </Nav>
           <Form className="d-flex">
             <Form.Control

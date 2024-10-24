@@ -27,8 +27,6 @@ const PurchasePage = () => {
     });
 
     const handleRowClick = (rowData) => {
-        console.log("issue on")
-        console.log(rowData)
         setSelectedRow(rowData);
         setShowModal(true); // Show modal
     };

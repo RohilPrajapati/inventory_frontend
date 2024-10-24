@@ -42,7 +42,9 @@ export function createClient () {
     },
     function (error) {
       if (error.response.status === 401) {
+        console.log("Not working 1")
         logout()
+        window.location.href = '/login';
         // window.location.reload()
       }
       return Promise.reject(error)

@@ -63,7 +63,7 @@ const SalesForm = () => {
     const handleCreateSales = (values) => {
         postSales(values).then((response) => {
             navigate('/sales');
-            toast.success('Added Purchase Successfully Successfully!');
+            toast.success('Added Sales Successfully Successfully!');
         }).catch((error) => {
             console.log(error.response.data)
             salesForm.setErrors(error.response.data)
